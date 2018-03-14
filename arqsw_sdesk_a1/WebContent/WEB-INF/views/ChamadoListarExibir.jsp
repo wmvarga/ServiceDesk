@@ -21,30 +21,42 @@
     <c:import url="Menu.jsp" />
     <!-- Container Principal -->
     <div id="main" class="container">
-        <h3 class="page-header">Redes</h3>
-        <table class="table table-striped table-bordered">
-			<thead>
-				<tr>
-		    		<th scope="col">Número</th>
-				    <th scope="col">Descrição</th>
-				    <th scope="col">Abertura</th>
-				    <th scope="col">Fechamento</th>
-				    <th scope="col">Status</th>
-				    <th scope="col">Tempo</th>
-		   		</tr>
-		  	</thead>
-			<tbody>
-		    	<c:forEach var="chamado" items="${chamados }">
-			    	<tr>
-			      		<th scope="row">${chamado.id }</th>
-			      		<td>${chamado.descricao }</td>
-			      		<td>${chamado.dt_abertura }</td>
-			      		<td>@${chamado.dt_fechamento }</td>
-			      		<td>@${chamado.status }</td>
-			    	</tr>
-		    	</c:forEach>
-		  	</tbody>
-		</table>
+        <h3 class="page-header">Chamado(s) da fila ${fila.nome }</h3>
+        <c:if test="${not empty chamados }">
+	        <div class="table-responsive col-md-12 col-lg-12">
+		        <table class="table table-striped table-bordered">
+					<thead>
+						<tr>
+				    		<th scope="col">Número</th>
+						    <th scope="col">Descrição</th>
+						    <th scope="col">Abertura</th>
+						    <th scope="col">Fechamento</th>
+						    <th scope="col">Status</th>
+						    <th scope="col">Tempo</th>
+				   		</tr>
+				  	</thead>
+					<tbody>
+				    	<c:forEach var="chamado" items="${chamados }">
+					    	<tr>
+					      		<th scope="row">${chamado.id }</th>
+					      		<td>${chamado.descricao }</td>
+					      		<td>${chamado.dt_abertura }</td>
+					      		<td>@${chamado.dt_fechamento }</td>
+					      		<td>@${chamado.status }</td>
+					    	</tr>
+				    	</c:forEach>
+				  	</tbody>
+				</table>
+			</div>
+        </c:if>
+        <c:if test="${empty chamados }">
+        	<div class="alert alert-info" role="alert">Não há chamados nesta fila.</div>
+        </c:if>
+        <div class="row">
+            <div class="col-md-12">
+            	<a href="listar_filas_exibir" class="btn btn-default">Voltar</a>
+			</div>
+        </div>
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

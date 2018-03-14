@@ -16,6 +16,16 @@
                     </li> 
                     <li><a href="listar_filas_exibir">Consultar Chamados</a>
                     </li>
+                    <c:if test="${not empty usuarioLogado}">
+	                    <li><a href="efetuar_logout">Logout</a>
+	                    </li>
+                    </c:if>
+                    <c:if test="${empty usuarioLogado}">
+	                    <li><strong>${usuarioLogado.username }</strong></a>
+	                    </li>
+	                    <li><a href="loginForm">Login</a>
+	                    </li>
+                    </c:if>
                 </ul>
             </div>
         </div>

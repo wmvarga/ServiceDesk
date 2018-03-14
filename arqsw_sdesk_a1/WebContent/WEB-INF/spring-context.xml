@@ -17,4 +17,13 @@
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	<bean id="mysqlDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://localhost/servicedesk"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="STEAM_0:0:23875859"></property>
+	</bean>
+	<mvc:interceptors>
+		<bean class="br.usjt.arqsw.interceptor.AutorizadorInterceptor"/>
+	</mvc:interceptors>
 </beans>
