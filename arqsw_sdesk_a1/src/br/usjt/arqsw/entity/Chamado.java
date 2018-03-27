@@ -3,6 +3,13 @@ package br.usjt.arqsw.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -11,7 +18,7 @@ import javax.validation.constraints.Size;
  * @author 81612389 - William Morone Varga
  *
  */
-
+@Entity
 public class Chamado implements Serializable {
 
 	public static final String ABERTO = "aberto";
@@ -21,6 +28,9 @@ public class Chamado implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_chamado")
 	@NotNull(message="O chamado não existe")
 	private int id;
 	
@@ -32,6 +42,8 @@ public class Chamado implements Serializable {
 	private Date dt_fechamento;
 	
 	@NotNull(message="O chamado deve pertencer a uma fila")
+	@ManyToOne
+	@JoinColumn(name="id_fila")
 	private Fila fila;
 	
 	public int getId() {

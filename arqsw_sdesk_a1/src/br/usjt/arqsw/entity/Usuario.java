@@ -1,15 +1,27 @@
 package br.usjt.arqsw.entity;
 
-import javax.validation.constraints.NotNull;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 /**
  * 
  * @author 81612389 - William Morone Varga
  *
  */
+@Entity
 public class Usuario {
+	
+	@Id
+	private int id;
 	
 	private String username;
 	private String password;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	public String getUsername() {
 		return username;

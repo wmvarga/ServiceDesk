@@ -3,6 +3,7 @@ package br.usjt.arqsw.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import br.usjt.arqsw.service.FilaService;
  * @author 81612389 - William Morone Varga
  *
  */
+@Transactional
 @Controller
 public class ManterChamadosController {
 	private FilaService filaService;
