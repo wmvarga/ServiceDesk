@@ -8,11 +8,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index">Sistema de Chamados (RA: 81612389)</a>
+                <a class="navbar-brand" href="index">Sistema de Chamados [William Morone Varga - RA: 81612389]</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="criar_novo_chamado">Novo Chamado</a>
+                    </li>
+                    <li><a href="listar_filas_fechar_chamados">Fechar Chamados</a>
                     </li> 
                     <li><a href="listar_filas_exibir">Consultar Chamados</a>
                     </li>
@@ -21,7 +23,7 @@
 	                    </li>
                     </c:if>
                     <c:if test="${empty usuarioLogado}">
-	                    <li><strong>${usuarioLogado.username }</strong></a>
+	                    <li><strong>${usuarioLogado.username }</strong>
 	                    </li>
 	                    <li><a href="loginForm">Login</a>
 	                    </li>

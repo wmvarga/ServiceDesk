@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Novo Chamado</title>
+    <title>Fechar Chamados</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     
@@ -21,20 +21,13 @@
     <c:import url="Menu.jsp" />
     <!-- Container Principal -->
     <div id="main" class="container">
-        <h3 class="page-header">Novo Chamado</h3>
-        <form action="salvar_chamado" method="get">
+        <h3 class="page-header">Fechar Chamados</h3>
+        <form action="fechar_chamados_exibir" method="get">
             <div class="row">
                 <div class="form-group col-md-4">
-                    <label for="descricao">Descrição:</label>
-                    <form:errors path="chamado.descricao" cssStyle="color:red"/><br>
-                    <input type="text" name="descricao" class="form-control" required placeholder="Descrição do chamado"></input>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-4">
-                    <label for="fila">Fila:</label>
-                    <form:errors path="chamado.fila.id" cssStyle="color:red"/><br>
-                    <select class="form-control" name="fila.id">
+                    <label for="fila">Escolha a Fila:</label>
+                    <form:errors path="fila.id" cssStyle="color:red"/><br>
+                    <select class="form-control" name="id">
                         <option value="0"></option>
                         <c:forEach var="fila" items="${filas}">
                             <option value="${fila.id}">${fila.nome}</option>
@@ -44,7 +37,7 @@
             </div>
             <div id="actions" class="row">
                 <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary" >Salvar Chamado </button>
+                    <button type="submit" class="btn btn-primary" >Listar Chamados Abertos</button>
                     <a href="index" class="btn btn-default">Cancelar</a>
                 </div>
             </div>

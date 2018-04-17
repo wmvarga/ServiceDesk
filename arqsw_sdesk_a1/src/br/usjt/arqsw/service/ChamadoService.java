@@ -1,6 +1,7 @@
 package br.usjt.arqsw.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,8 +27,18 @@ public class ChamadoService {
 		this.dao = dao;
 	}
 	
+	// listar de uma fila
 	public List<Chamado> listarChamados(Fila fila) throws IOException {
 		return dao.listarChamados(fila);		
+	}
+	
+	// listar todos
+	public List<Chamado> listarChamados() throws IOException {
+		return dao.listarChamados();
+	}
+	
+	public List<Chamado> listarChamadosAbertos(Fila fila) throws IOException {
+		return dao.listaChamadosAbertos(fila);
 	}
 	
 	public int criarChamado(Chamado chamado) throws IOException {
@@ -35,5 +46,9 @@ public class ChamadoService {
 		chamado.setDt_abertura(new Date());
 		return dao.criarChamado(chamado);
 	}
+
+	public void fecharChamados(ArrayList<Integer> listaIds) throws IOException {
+		dao.fecharChamados(listaIds);
+	}	
 
 }

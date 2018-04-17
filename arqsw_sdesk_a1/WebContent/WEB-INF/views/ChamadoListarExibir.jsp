@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -38,11 +39,19 @@
 					<tbody>
 				    	<c:forEach var="chamado" items="${chamados }">
 					    	<tr>
-					      		<th scope="row">${chamado.id }</th>
+					      		<td scope="row">${chamado.id }</td>
 					      		<td>${chamado.descricao }</td>
-					      		<td>${chamado.dt_abertura }</td>
-					      		<td>@${chamado.dt_fechamento }</td>
-					      		<td>@${chamado.status }</td>
+					      		<td><fmt:formatDate value="${chamado.dt_abertura }" pattern="dd/MM/yyyy" /></td>
+					      		<td>
+					      			<c:if test="${!empty chamado.dt_fechamento}">
+					      				<fmt:formatDate value="${chamado.dt_fechamento }" pattern="dd/MM/yyyy" />
+					      			</c:if>
+					      			<c:if test="${empty chamado.dt_fechamento}">
+					      				-
+					      			</c:if>
+					      		</td>
+					      		<td>${chamado.status }</td>
+					      		<td align="right"><fmt:formatNumber type="number" value="${chamado.tempoDias}"/></td>
 					    	</tr>
 				    	</c:forEach>
 				  	</tbody>

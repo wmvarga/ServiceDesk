@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 /**
  * 
  * @author 81612389 - William Morone Varga
@@ -36,9 +38,13 @@ public class Chamado implements Serializable {
 	
 	@NotNull
 	@Size(min=5, max=50, message="A descrição do chamado deve estar entre 5 e 50 caracteres.")
-	private String descricao;	
+	private String descricao;
+	@NotNull
 	private String status;
+	@NotNull
+	@JsonFormat(pattern="dd-MM-yyyy")
 	private Date dt_abertura;
+	@JsonFormat(pattern="dd-MM-yyyy")
 	private Date dt_fechamento;
 	
 	@NotNull(message="O chamado deve pertencer a uma fila")
@@ -81,6 +87,21 @@ public class Chamado implements Serializable {
 	}
 	public void setFila(Fila fila) {
 		this.fila = fila;
+	}
+	
+	public int getTempoDias(){
+		//Método do Bonato
+		//getTime e currentTimeMillis retornam o tempo em milisegundos
+		//dividir por 1000 * 60 * 60 * 24 converte para dias
+		int dias;
+		if(dt_fechamento == null){
+			//considera o momento atual para calcular o tempo aberto
+			dias = (int)(System.currentTimeMillis() - dt_abertura.getTime())/(1000 * 60 * 60 * 24);
+		} else {
+			//considera a data de fechamento para calcular o tempo aberto
+			dias = (int)(dt_fechamento.getTime() - dt_abertura.getTime())/(1000 * 60 * 60 * 24);
+		}
+		return dias;
 	}
 	
 	@Override
