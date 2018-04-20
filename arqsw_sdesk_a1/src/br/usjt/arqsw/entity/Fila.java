@@ -25,14 +25,16 @@ public class Fila implements Serializable{
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Column(name="id_fila")
-	@NotNull(message="A fila não pode ser vazia")
-	@Min(value=1, message="A fila não pode ser vazia")
+	@NotNull
 	private int id;
 	
 	@Column(name="nm_fila")
 	@NotNull
 	@Size(min=5, max=45, message="O nome da fila deve estar entre 5 e 45 caracteres.")
 	private String nome;
+	
+	@Column(name="nm_figura")
+	private String imagem;
 	
 	public int getId() {
 		return id;
@@ -45,6 +47,12 @@ public class Fila implements Serializable{
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	public String getImagem() {
+		return imagem;
+	}
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
 	}
 	@Override
 	public String toString() {

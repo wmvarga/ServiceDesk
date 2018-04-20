@@ -12,11 +12,25 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="criar_novo_chamado">Novo Chamado</a>
+                    <li class="dropdown">
+                    	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Fila <b class="caret"></b></a>
+                    	<ul class="dropdown-menu">
+                    		<li><a href="fila_criar">Nova Fila</a>
+		                    </li>
+                    		<li><a href="listar_filas">Listar Filas</a>
+		                    </li>
+                    	</ul>
                     </li>
-                    <li><a href="listar_filas_fechar_chamados">Fechar Chamados</a>
-                    </li> 
-                    <li><a href="listar_filas_exibir">Consultar Chamados</a>
+                    <li class="dropdown">
+                    	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Chamado <b class="caret"></b></a>
+                    	<ul class="dropdown-menu">
+                    		<li><a href="criar_novo_chamado">Novo Chamado</a>
+		                    </li>
+		                    <li><a href="listar_filas_fechar_chamados">Fechar Chamados</a>
+		                    </li> 
+		                    <li><a href="listar_filas_exibir">Consultar Chamados</a>
+		                    </li>
+                    	</ul>
                     </li>
                     <c:if test="${not empty usuarioLogado}">
 	                    <li><a href="efetuar_logout">Logout</a>

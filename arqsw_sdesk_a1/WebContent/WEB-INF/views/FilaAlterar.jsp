@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Novo Chamado</title>
+    <title>Alterar Fila</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     
@@ -21,30 +21,25 @@
     <c:import url="Menu.jsp" />
     <!-- Container Principal -->
     <div id="main" class="container">
-        <h3 class="page-header">Novo Chamado</h3>
-        <form action="salvar_chamado" method="get">
+        <h3 class="page-header">Alterar Fila</h3>
+        <form action="atualizar_fila" method="post" enctype="multipart/form-data">
+        	<input type="hidden" name="id" value="${fila.id}">
             <div class="row">
                 <div class="form-group col-md-4">
-                    <label for="descricao">Descrição:</label>
+                    <label for="descricao">Nome:</label>
                     <form:errors path="chamado.descricao" cssStyle="color:red"/><br>
-                    <input type="text" name="descricao" id="descricao" class="form-control" required placeholder="Descrição do chamado"></input>
+                    <input type="text" name="nome" class="form-control" required placeholder="Nome da fila" value="${fila.nome }"></input>
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-4">
-                    <label for="fila">Fila:</label>
-                    <form:errors path="chamado.fila.id" cssStyle="color:red"/><br>
-                    <select class="form-control" name="fila.id">
-                        <option value="0"></option>
-                        <c:forEach var="fila" items="${filas}">
-                            <option value="${fila.id}">${fila.nome}</option>
-                        </c:forEach>
-                    </select>
+                    <label for="arquivo">Selecione um novo arquivo .JPG para a imagem da fila:</label>
+                    <input type="file" name="file" id="arquivo" class="form-control-file">
                 </div>
             </div>
             <div id="actions" class="row">
                 <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary" >Salvar Chamado </button>
+                    <button type="submit" class="btn btn-primary" >Alterar Fila </button>
                     <a href="index" class="btn btn-default">Cancelar</a>
                 </div>
             </div>

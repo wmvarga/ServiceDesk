@@ -31,6 +31,15 @@ public class FilaDAO {
 		}
 	}*/
 	
+	public int criar(Fila fila) throws IOException {
+		manager.persist(fila);
+		return fila.getId();
+	}
+	
+	public void alterar(Fila fila) throws IOException {
+		manager.merge(fila);
+	}
+	
 	public Fila carregar(int id) throws IOException {
 		return manager.find(Fila.class, id);	
 	}
@@ -42,6 +51,10 @@ public class FilaDAO {
 
 		List<Fila> result = query.getResultList();
 		return result;
+	}
+	
+	public void excluir(Fila fila) throws IOException {
+		manager.remove(fila);
 	}
 
 }

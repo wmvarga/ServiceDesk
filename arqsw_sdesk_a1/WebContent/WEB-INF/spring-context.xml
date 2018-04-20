@@ -38,4 +38,6 @@
 		<property name="entityManagerFactory" ref="entityManagerFactory"/>
 	</bean>
 	<tx:annotation-driven />
+	<bean id="multipartResolver"
+    class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 </beans>

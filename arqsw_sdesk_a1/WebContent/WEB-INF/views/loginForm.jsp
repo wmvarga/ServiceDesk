@@ -22,7 +22,7 @@
     <!-- Container Principal -->
     <div id="main" class="container">
         <h3 class="page-header">Login</h3>
-        <form action="efetuar_login" method="get">
+        <form action="efetuar_login" method="post">
             <div class="row">
                 <div class="form-group col-md-4">
                     <label for="username">Username:</label>
